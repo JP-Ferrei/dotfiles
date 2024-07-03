@@ -23,3 +23,6 @@ style = "Italic"
 [font.normal]
 family = "CaskaydiaMonoNerdFont"
 style = "Regular"
+
+[window]
+opacity = 0.8
