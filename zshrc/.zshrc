@@ -30,4 +30,5 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
+export PATH=$PATH:$HOME/.dotnet/tools
 eval "$(zoxide init zsh)"
