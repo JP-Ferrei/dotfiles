@@ -1,4 +1,5 @@
 (defcfg
+   windows-altgr add-lctl-release
 )
 
 (defsrc
