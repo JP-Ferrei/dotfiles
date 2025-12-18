@@ -1,0 +1,48 @@
+(defcfg
+)
+
+(defsrc
+  esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(defvar
+  tap-time 150
+  hold-time 200
+  hold-time-slow 300
+)
+
+(defalias
+
+  l_arrows (layer-toggle arrows)
+  escctrl (tap-hold 100 100 esc lctl)
+  a (multi f24 (tap-hold $tap-time $hold-time-slow a lmet))
+  s (multi f24 (tap-hold $tap-time $hold-time-slow s lalt))
+  d (multi f24 (tap-hold $tap-time $hold-time d lsft))
+  f (multi f24 (tap-hold $tap-time $hold-time f lctl))
+  j (multi f24 (tap-hold $tap-time $hold-time j rctl))
+  k (multi f24 (tap-hold $tap-time $hold-time k rsft))
+  l (multi f24 (tap-hold $tap-time $hold-time l ralt))
+  ; (multi f24 (tap-hold $tap-time $hold-time-slow ; rmet))
+  c (tap-hold $tap-time $hold-time-slow c (macro ' c))
+  left_alt (tap-hold $tap-time $hold-time-slow lalt @l_arrows)
+)
+
+(deflayer base
+  esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @escctrl @a   @s   @d    @f   g   h   @j   @k   @l   @;    '    ret
+  lsft z    x   @c    v    b    n    m    ,    .    /    rsft
+  lctl lmet @left_alt          spc            ralt rmet rctl
+)
+
+(deflayer arrows
+  esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @escctrl @a   @s   @d    @f   g   left   up   down   right   @;    '    ret
+  lsft z    x   @c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
